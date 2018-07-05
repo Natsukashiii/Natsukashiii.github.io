@@ -470,56 +470,22 @@
 
       
         
-          
-            <h4 id="反编译-修改-重新打包-签名"><a href="#反编译-修改-重新打包-签名" class="headerlink" title="反编译/修改/重新打包/签名"></a>反编译/修改/重新打包/签名</h4><ul>
+          <h4 id="反编译-修改-重新打包-签名"><a href="#反编译-修改-重新打包-签名" class="headerlink" title="反编译/修改/重新打包/签名"></a>反编译/修改/重新打包/签名</h4><ul>
 <li>工具：apktool/dex2jar/JD-GUI</li>
-<li>apktool<ul>
-<li>安装apktool的时候，按官网的操作不能直接存成apktool，会自动带.sh后缀，但是这个格式复制到/usr/local/bin之后 apktool command not find，最后尝试了一下直接在bin里改名字之后apktool就有提示了</li>
-<li>在有apk的文件夹下，<code>apktool d xx.apk</code> 就生成反编译之后的文件</li>
-<li><code>apktool b xxx</code>，会生成build和dist文件夹，回编译出来的apk在dist目录下，但是build/apk文件夹里会少了original文件夹下的META-INF文件夹</li>
-</ul>
+<li><p>apktool</p>
+<ul>
+<li><p>安装apktool的时候，按官网的操作不能直接存成apktool，会自动带.sh后缀，但是这个格式复制到/usr/local/bin之后 apktool command not find，最后尝试了一下直接在bin里改名字之后apktool就有提示了</p>
 </li>
-<li>dex2jar<ul>
-<li>有毒。。教程是要把classes.dex文件放到d2j的文件夹下，但是一直找不到命令</li>
-<li>最后把原来的apk放进去才有反应。。。</li>
-<li><code>chmod +x d2j-dex2jar.sh/d2j_invoke.sh</code>添加权限</li>
-<li>执行 <code>d2j_dex2jar.sh xx.apk</code></li>
-<li>生成的xx-dex2jar文件就在dex2jar的文件夹里</li>
-</ul>
+<li><p>在有apk的文件夹下，<code>apktool d xx.apk</code> 就生成反编译之后的文件</p>
 </li>
-<li>JD-GUI<ul>
-<li>jar文件JDGUI直接拖进去看就行了</li>
-</ul>
-</li>
-<li>修改<ul>
-<li>AndroidManefist.xml文件里有MainActivity的入口，在JDGUL里查看之后但是还没看懂。。其他改smail代码但是也不会。。只能改字段了。。。</li>
-<li>如果只是修改一个界面的话，apk首页的文字应该在values里会有一个string类，所以直接在apktool反编译之后的文件夹下的，/res/values/里的文件找，下面文件夹比较多，根目录下arrays.xml里面就有首页的文字段..</li>
-</ul>
-</li>
-<li>重新打包<ul>
-<li>直接在之前apktool反编译的目录下，<code>apktool b xxx</code>回编译，会生成build和dist文件夹，dist文件夹里就是生成的apk文件</li>
-<li>也可以 <code>apktool.bat b -o &lt;output.apk&gt; &lt;input_dir&gt;</code> 指定输出目录和apk文件名</li>
-</ul>
-</li>
-<li>签名<ul>
-<li>dist下的apk文件不能直接安装，会显示没有签名…</li>
-<li>先需要keystore文件<ul>
-<li><code>keytool -genkey -alias xx.keystore -keyalg RSA -validity 40000 -keystore xx.keystore</code></li>
-<li>-genkey 产生证书； -alias 产生别名； -keystore：指定密钥库的.keystore文件中；-keyalg：密钥算法，这里是RSA；-validity：证书有效天数</li>
-<li>产生的提示里的keystore密码就是后面签名APK要输入的</li>
-</ul>
-</li>
-<li>签名apk<ul>
-<li><code>jarsigner -verbose -keystore xx.keystore xx.apk xx.keystore</code></li>
-<li>-verbose：指定生成输出；-keystore：指定证书的存储路径</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>之后apk就能安装，但是如果之前已经装过这个apk需要先卸载，</li>
-</ul>
-
-          
+<li><p><code>apktool b xxx</code>，会生成build和dist文件夹，回编译出来的apk在dist目录下，但是build/apk文件夹里会少了original文件夹下的META-INF文件夹</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/03/反编译APK/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
