@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对 其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开  支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数">
+<meta name="description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对  其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开   支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这">
 <meta name="keywords" content="sharedpreferences">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sharedpreferences">
 <meta property="og:url" content="http://Natsukashiii.github.io/2018/04/28/SharedPreferences/index.html">
 <meta property="og:site_name" content="Natsukashii">
-<meta property="og:description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对 其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开  支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数">
+<meta property="og:description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对  其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开   支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-08T04:41:38.185Z">
+<meta property="og:updated_time" content="2018-07-10T07:50:47.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sharedpreferences">
-<meta name="twitter:description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对 其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开  支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数">
+<meta name="twitter:description" content="Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对  其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开   支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这">
 
 
 
@@ -368,10 +368,15 @@
 
       
         <h4 id="Sharedpreferences"><a href="#Sharedpreferences" class="headerlink" title="Sharedpreferences"></a>Sharedpreferences</h4><ul>
-<li>轻量级的存储类，KEY/VALUE形式，类似键值对</li>
-<li>其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开 </li>
-<li>支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数据类型。</li>
-<li>实现方法：<ul>
+<li><p>轻量级的存储类，KEY/VALUE形式，类似键值对</p>
+</li>
+<li><p>其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开 </p>
+</li>
+<li><p>支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数据类型。</p>
+<a id="more"></a>
+</li>
+<li><p>实现方法：</p>
+<ul>
 <li>先获取一个SharedPreferences对象:1.第一个参数是生成的存储文件的名字，第二个参数是存储的格式：<code>SharedPreferenced sp=Context.getSharedPreferences(&quot;sp_demo&quot;,Context.MODE_PRIVATE);</code><ul>
 <li>MODE_PRIVATE：默认操作模式，只有当前的应用程序才可以对整个SharedPreferences文件读写；</li>
 <li>MODE_MULTI_PRIVATE：多个进程共同操作同一个文件</li>
@@ -385,12 +390,15 @@
 <li>提交数据到xml文件中：<code>edit.commit();</code></li>
 </ul>
 </li>
-<li>取出数据<ul>
+<li><p>取出数据</p>
+<ul>
 <li>第一个参数是写入的键，第二个参数是如果没有获取到数据就默认返回的值：<code>String name = sp.getString(&quot;name&quot;,null);</code></li>
 </ul>
 </li>
-<li>如果类没有继承Activity，不能直接用getSharedPreferences方法context.getSharedPreferences();</li>
-<li>实现代码：<ul>
+<li><p>如果类没有继承Activity，不能直接用getSharedPreferences方法context.getSharedPreferences();</p>
+</li>
+<li><p>实现代码：</p>
+<ul>
 <li><code>SharedPreferences pref =MainActivity.this.getSharedPreferences(“data”,MODE_PRIVATE);</code><br><code>SharedPreferences.Editor editor = pref.edit();</code><br><code>editor.putString(“name”,”lily”);</code><br><code>editor.putString(“age”,”20”);</code><br><code>editor.putBoolean(“married”,false);</code><br><code>editor.commit();</code><br>-</li>
 </ul>
 </li>
