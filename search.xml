@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Maven]]></title>
+    <url>%2F2018%2F08%2F09%2FMaven%2F</url>
+    <content type="text"><![CDATA[Maven-Pom.xml 软件项目管理工具，基于POM的概念，有标准的目录结构和默认构建生命周期。 Maven启用代理访问 在 {M2_HOME}/conf/settings.xml里 标签下填写代理信息 Maven本地资源库 通常本地资源库默认是.m2目录，如果要改本地库的地址的话，可以在{M2_HOME}\conf\setting.xml的标签下改repository路径 Maven中央存储库 一般建立一个Maven项目，Maven会检查pom.xml文件，确定哪些依赖会下载，会先找本地的repository库，没有找到的话，会去默认的Maven中央存储库http://repo1.maven.org/maven2/ 下载，已经重定向为 http://search.maven.org/ 如果声明的库本地和Maven中心存储库都不存在的话，就会停止过程并且将错误信息输出到Maven控制台 Maven添加远程仓库 默认情况下，Maven从Maven中央仓库下载所有依赖关系。但是，有些库丢失在中央存储库，只有在Java.net或JBoss的储存库远程仓库中能找到。 Java.net资源库 &lt;project ...&gt;&lt;repositories&gt;&lt;repository&gt;&lt;id&gt;java.net&lt;/id&gt;&lt;url&gt;https://maven.java.net/content/repositories/public/&lt;/url&gt;&lt;/repository&gt; &lt;/repositories&gt;&lt;/project&gt; JBoss Maven存储库 &lt;id&gt;JBoss repository&lt;/id&gt;&lt;url&gt;http://repository.jboss.org/nexus/content/groups/public/&lt;/url&gt; Maven依赖机制 你需要知道 log4j 的 Maven 坐标，例如：它会自动下载 log4j 的1.2.14 版本库。如果“version”标签被忽略，它会自动升级库时当有新的版本时。 声明 Maven 的坐标转换成 pom.xml 文件。 当 Maven 编译或构建，log4j 的 jar 会自动下载，并把它放到 Maven 本地存储库 所有由 Maven 管理 定制库到Maven本地资源库//虽然我觉得可以直接复制到repository里，只需要建好文件夹的包括groupid之类的都要分文件夹.. 要使用的 jar 不存在于 Maven 的中心储存库中，创建了一个自定义的 jar ，而另一个 Maven 项目需要使用。 比如”kaptcha”第三方库不在中央仓库里，下面步骤安装”kaptcha.jar”到Maven的本地资源库 下载这个jar包，复制到某文件夹下之后，执行mvn install:install-file -Dfile={FILE_HOME}:\kaptcha-{version}.jar -DgroupId=com.google.code -DartifactId=kaptcha -Dversion={version} -Dpackaging=jar 使用Maven创建Java项目 IDEA可以直接创建Maven项目，创建的时候还可以i选择是否是web项目之类的 插件里可以告诉Maven使用哪个JDK版本编译项目 Maven里设置 &lt;project ...&gt;4.0.0&lt;groupId&gt;com.yiibai&lt;/groupId&gt;NumberGeneratorpackaging&gt;jar&lt;/packaging&gt;1.0-SNAPSHOT` mvn package可以运行单元测试并打包成一个jar文件，生成在project/target文件夹 使用Maven构建项目 pom.xml文件所在的项目文件夹下，执行mvn package，将执行“package”阶段的时候，所有阶段 – “validate“, “compile” 和 “test“, 包括目前的阶段“package”将被执行 当你运行“mvn package”命令，它会编译源代码，运行单元测试和包装这取决于在pom.xml文件的“packaging”标签。 例如, If “packaging” = jar, 将您的项目打包成一个“jar”文件，并把它变成你的目标文件夹。 如果 “packaging” = war,将您的项目打包成“war”文件，并把它变成目标文件夹。 标签 GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构（com.公司名.项目名）。ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称（功能模块名）。一般GroupID就是填com.leafive.test这样子。 会遇上1.5.2 RELEASE版本报错,如果Maven的setting里没有设置阿里的仓库地址下载二十多兆的jar包速度非常慢，最后可能就会连接超时，需要在setting.xml文件中设置一下阿里仓库的地址，这个是国外仓库的镜像，把以下代码加到setting.xml文件中的中间&lt;mirror&gt;&lt;id&gt;nexus-aliyun&lt;/id&gt;&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;&lt;name&gt;Nexus aliyun&lt;/name&gt;&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;&lt;/mirror&gt; 规范版本号和一些属性 Maven的聚合（多模块） 和Parent继承 聚合（多模块） 具有模块的项目呗成为多模块或者聚合项目，模块是此POM列出并作为一组执行的项目。通过一个pom打包的项目可以将它们列为模块来聚合成一组项目进行构建，这些模块名是这些项目的相对目录。 Parent继承 继承可以子POM可以获得parent中的各项配置，可以对子POM进行统一的配置和管理，但是父POM的（artifactId、name、prerequisites）不能被继承 父POM是为了方便子POM直接引用，简化子POM的配置。聚合（多模块）则是为了方便一组项目进行统一的操作。]]></content>
+      <categories>
+        <category>Java Web</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F06%2F21%2FHello-World-0%2F</url>
     <content type="text"></content>

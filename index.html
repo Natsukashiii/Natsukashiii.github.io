@@ -259,6 +259,234 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Natsukashiii.github.io/2018/08/09/Maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Natsukashii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Natsukashii">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/09/Maven/" itemprop="url">Maven</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T21:26:21+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>Maven-Pom.xml</p>
+<ul>
+<li>软件项目管理工具，基于POM的概念，有标准的目录结构和默认构建生命周期。</li>
+<li>Maven启用代理访问<ul>
+<li>在 {M2_HOME}/conf/settings.xml里<proxy> 标签下填写代理信息</proxy></li>
+</ul>
+</li>
+<li>Maven本地资源库<ul>
+<li>通常本地资源库默认是.m2目录，如果要改本地库的地址的话，可以在{M2_HOME}\conf\setting.xml的<localrepository>标签下改repository路径      </localrepository></li>
+</ul>
+</li>
+<li>Maven中央存储库<ul>
+<li>一般建立一个Maven项目，Maven会检查pom.xml文件，确定哪些依赖会下载，会先找本地的repository库，没有找到的话，会去默认的Maven中央存储库<a href="http://repo1.maven.org/maven2/" target="_blank" rel="noopener">http://repo1.maven.org/maven2/</a> 下载，已经重定向为 <a href="http://search.maven.org/" target="_blank" rel="noopener">http://search.maven.org/</a></li>
+<li>如果声明的库本地和Maven中心存储库都不存在的话，就会停止过程并且将错误信息输出到Maven控制台</li>
+</ul>
+</li>
+<li>Maven添加远程仓库<ul>
+<li>默认情况下，Maven从Maven中央仓库下载所有依赖关系。但是，有些库丢失在中央存储库，只有在Java.net或JBoss的储存库远程仓库中能找到。</li>
+<li>Java.net资源库<ul>
+<li><code>&lt;project ...&gt;</code><br><code>&lt;repositories&gt;</code><br><code>&lt;repository&gt;</code><br><code>&lt;id&gt;java.net&lt;/id&gt;</code><br><code>&lt;url&gt;https://maven.java.net/content/repositories/public/&lt;/url&gt;</code><br><code>&lt;/repository&gt;</code><br> <code>&lt;/repositories&gt;</code><br><code>&lt;/project&gt;</code></li>
+</ul>
+</li>
+<li>JBoss Maven存储库<ul>
+<li><code>&lt;id&gt;JBoss repository&lt;/id&gt;</code><br><code>&lt;url&gt;http://repository.jboss.org/nexus/content/groups/public/&lt;/url&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Maven依赖机制<ul>
+<li>你需要知道 log4j 的 Maven 坐标，例如：它会自动下载 log4j 的1.2.14 版本库。如果“version”标签被忽略，它会自动升级库时当有新的版本时。</li>
+<li>声明 Maven 的坐标转换成 pom.xml 文件。</li>
+<li>当 Maven 编译或构建，log4j 的 jar 会自动下载，并把它放到 Maven 本地存储库</li>
+<li>所有由 Maven 管理 </li>
+</ul>
+</li>
+<li>定制库到Maven本地资源库//虽然我觉得可以直接复制到repository里，只需要建好文件夹的包括groupid之类的都要分文件夹..<ul>
+<li>要使用的 jar 不存在于 Maven 的中心储存库中，创建了一个自定义的 jar ，而另一个 Maven 项目需要使用。  </li>
+<li>比如”kaptcha”第三方库不在中央仓库里，下面步骤安装”kaptcha.jar”到Maven的本地资源库<ul>
+<li>下载这个jar包，复制到某文件夹下之后，执行<code>mvn install:install-file -Dfile={FILE_HOME}:\kaptcha-{version}.jar -DgroupId=com.google.code -DartifactId=kaptcha -Dversion={version} -Dpackaging=jar</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用Maven创建Java项目<ul>
+<li>IDEA可以直接创建Maven项目，创建的时候还可以i选择是否是web项目之类的</li>
+<li>插件里可以告诉Maven使用哪个JDK版本编译项目</li>
+<li>Maven里设置<ul>
+<li><code>&lt;project ...&gt;</code><br><modelversion>4.0.0</modelversion><code>&lt;groupId&gt;com.yiibai&lt;/groupId&gt;</code><br><artifactid>NumberGenerator</artifactid><code>packaging&gt;jar&lt;/packaging&gt;</code><br><version>1.0-SNAPSHOT</version>`</li>
+<li>mvn package可以运行单元测试并打包成一个jar文件，生成在project/target文件夹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用Maven构建项目<ul>
+<li>pom.xml文件所在的项目文件夹下，执行<code>mvn package</code>，将执行“package”阶段的时候，所有阶段 – “validate“, “compile” 和 “test“, 包括目前的阶段“package”将被执行</li>
+<li>当你运行“mvn package”命令，它会编译源代码，运行单元测试和包装这取决于在pom.xml文件的“packaging”标签。 例如,<ol>
+<li>If “packaging” = jar, 将您的项目打包成一个“jar”文件，并把它变成你的目标文件夹。</li>
+<li>如果 “packaging” = war,将您的项目打包成“war”文件，并把它变成目标文件夹。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>标签<ul>
+<li>GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构（com.公司名.项目名）。ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称（功能模块名）。一般GroupID就是填com.leafive.test这样子。</li>
+<li>会遇上1.5.2 RELEASE版本报错,如果Maven的setting里没有设置阿里的仓库地址下载二十多兆的jar包速度非常慢，最后可能就会连接超时，需要在setting.xml文件中设置一下阿里仓库的地址，这个是国外仓库的镜像，把以下代码加到setting.xml文件中的<mirrors></mirrors>中间<br><code>&lt;mirror&gt;</code><br><code>&lt;id&gt;nexus-aliyun&lt;/id&gt;</code><br><code>&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</code><br><code>&lt;name&gt;Nexus aliyun&lt;/name&gt;</code><br><code>&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</code><br><code>&lt;/mirror&gt;</code></li>
+<li><properties><ul>
+<li>规范版本号和一些属性</li>
+</ul>
+</properties></li>
+</ul>
+</li>
+<li>Maven的聚合（多模块） 和Parent继承<ul>
+<li>聚合（多模块）<ul>
+<li>具有模块的项目呗成为多模块或者聚合项目，模块是此POM列出并作为一组执行的项目。通过一个pom打包的项目可以将它们列为模块来聚合成一组项目进行构建，这些模块名是这些项目的相对目录。<module></module></li>
+</ul>
+</li>
+<li>Parent继承<ul>
+<li>继承可以子POM可以获得parent中的各项配置，可以对子POM进行统一的配置和管理，但是父POM的（artifactId、name、prerequisites）不能被继承</li>
+</ul>
+</li>
+<li>父POM是为了方便子POM直接引用，简化子POM的配置。聚合（多模块）则是为了方便一组项目进行统一的操作。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Natsukashiii.github.io/2018/06/21/Hello-World-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -866,7 +1094,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -888,7 +1116,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
