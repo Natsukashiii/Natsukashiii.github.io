@@ -28,17 +28,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[反编译/修改/重新打包/签名]]></title>
-    <url>%2F2018%2F05%2F03%2F%E5%8F%8D%E7%BC%96%E8%AF%91APK%2F</url>
-    <content type="text"><![CDATA[反编译/修改/重新打包/签名 工具：apktool/dex2jar/JD-GUI apktool 官网下载apktool：https://ibotpeaches.github.io/Apktool/install/ 安装apktool的时候，按官网的操作不能直接存成apktool，会自动带.sh后缀，但是这个格式复制到/usr/local/bin之后 apktool command not find，最后尝试了一下直接在bin里改名字之后apktool就有提示了 在有apk的文件夹下，apktool d xx.apk 就生成反编译之后的文件 apktool b xxx，会生成build和dist文件夹，回编译出来的apk在dist目录下，但是build/apk文件夹里会少了original文件夹下的META-INF文件夹 dex2jar 有毒。。教程是要把classes.dex文件放到d2j的文件夹下，但是一直找不到命令 最后把原来的apk放进去才有反应。。。 chmod +x d2j-dex2jar.sh/d2j_invoke.sh添加权限 执行 d2j_dex2jar.sh xx.apk 生成的xx-dex2jar文件就在dex2jar的文件夹里 JD-GUI jar文件JDGUI直接拖进去看就行了 修改 AndroidManefist.xml文件里有MainActivity的入口，在JDGUL里查看之后但是还没看懂。。其他改smail代码但是也不会。。只能改字段了。。。 如果只是修改一个界面的话，apk首页的文字应该在values里会有一个string类，所以直接在apktool反编译之后的文件夹下的，/res/values/里的文件找，下面文件夹比较多，根目录下arrays.xml里面就有首页的文字段.. 重新打包 直接在之前apktool反编译的目录下，apktool b xxx回编译，会生成build和dist文件夹，dist文件夹里就是生成的apk文件 也可以 apktool.bat b -o &lt;output.apk&gt; &lt;input_dir&gt; 指定输出目录和apk文件名 签名 dist下的apk文件不能直接安装，会显示没有签名… 先需要keystore文件 keytool -genkey -alias xx.keystore -keyalg RSA -validity 40000 -keystore xx.keystore -genkey 产生证书； -alias 产生别名； -keystore：指定密钥库的.keystore文件中；-keyalg：密钥算法，这里是RSA；-validity：证书有效天数 产生的提示里的keystore密码就是后面签名APK要输入的 签名apk jarsigner -verbose -keystore xx.keystore xx.apk xx.keystore -verbose：指定生成输出；-keystore：指定证书的存储路径 之后apk就能安装，但是如果之前已经装过这个apk需要先卸载，]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>apktool</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Sharedpreferences]]></title>
     <url>%2F2018%2F04%2F28%2FSharedPreferences%2F</url>
     <content type="text"><![CDATA[Sharedpreferences 轻量级的存储类，KEY/VALUE形式，类似键值对 其中的原理是通过Android系统生成一个xml文件保到：/data/data/包名/shared_prefs目录下//DDMS里data文件夹权限是drwxrsw–x，需要修改权限才能打开 支持Java基本数据类型保存接口比如：int、long、boolean、String、Float、Set和Map这些数据类型。 实现方法： 先获取一个SharedPreferences对象:1.第一个参数是生成的存储文件的名字，第二个参数是存储的格式：SharedPreferenced sp=Context.getSharedPreferences(&quot;sp_demo&quot;,Context.MODE_PRIVATE); MODE_PRIVATE：默认操作模式，只有当前的应用程序才可以对整个SharedPreferences文件读写； MODE_MULTI_PRIVATE：多个进程共同操作同一个文件 获取edit对象：Editor editor = sp.edit(); 通过editor对象写入，也可以putInt、putBoolean：edit.putString(&quot;name&quot;,&quot;John&quot;); 直接用edit的方式没法存储，因为sp.edit()每次都会返回一个新的Editor对象，Editor的实现类EditorImpl里面会有一个缓存的Map，最后commit的时候先将缓存里面的Map写入内存中的Map，然后将内存中的Map写进XML文件中。使用上面的方式commit，由于sp.edit()又重新返回了一个新的Editor对象，缓存中的Map是空的，所以没法存储 提交数据到xml文件中：edit.commit(); 取出数据 第一个参数是写入的键，第二个参数是如果没有获取到数据就默认返回的值：String name = sp.getString(&quot;name&quot;,null); 如果类没有继承Activity，不能直接用getSharedPreferences方法context.getSharedPreferences(); 实现代码： SharedPreferences pref =MainActivity.this.getSharedPreferences(“data”,MODE_PRIVATE);SharedPreferences.Editor editor = pref.edit();editor.putString(“name”,”lily”);editor.putString(“age”,”20”);editor.putBoolean(“married”,false);editor.commit();-]]></content>
