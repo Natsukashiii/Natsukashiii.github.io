@@ -756,6 +756,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Natsukashiii.github.io/2018/05/03/反编译APK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Natsukashii">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Natsukashii">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/03/反编译APK/" itemprop="url">反编译/修改/重新打包/签名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T20:35:45+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="反编译-修改-重新打包-签名"><a href="#反编译-修改-重新打包-签名" class="headerlink" title="反编译/修改/重新打包/签名"></a>反编译/修改/重新打包/签名</h4><ul>
+<li>工具：apktool/dex2jar/JD-GUI</li>
+<li><p>apktool</p>
+<ul>
+<li><p>官网下载apktool：<a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/install/</a></p>
+</li>
+<li><p>安装apktool的时候，按官网的操作不能直接存成apktool，会自动带.sh后缀，但是这个格式复制到/usr/local/bin之后 apktool command not find，最后尝试了一下直接在bin里改名字之后apktool就有提示了</p>
+</li>
+<li><p>在有apk的文件夹下，<code>apktool d xx.apk</code> 就生成反编译之后的文件</p>
+</li>
+<li><p><code>apktool b xxx</code>，会生成build和dist文件夹，回编译出来的apk在dist目录下，但是build/apk文件夹里会少了original文件夹下的META-INF文件夹</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/03/反编译APK/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Natsukashiii.github.io/2018/04/28/SharedPreferences/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -940,7 +1096,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -962,7 +1118,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
